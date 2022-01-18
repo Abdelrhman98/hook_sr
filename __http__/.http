@@ -1,5 +1,17 @@
+
+@host = http://localhost:3000
 ###
-http://localhost:3000
+GET {{host}}/aggregator
+
+
+###Get service List ###
+POST {{host}}/aggregator/serviceList
+Content-Type: application/json
+
 {
-    
+    "services":[19]
 }
+
+
+###
+GET {{host}}
