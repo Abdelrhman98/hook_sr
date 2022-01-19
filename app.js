@@ -6,8 +6,8 @@ var bodyParser = require('body-parser')
 const MongoUri = require('./connections/mongoClient')
 
 
-var indexRouter = require('./routes/index');
-var aggregatorRouter = require('./routes/aggregator');
+var serviceRepoRouter = require('./routes/serviceRepo.endpoints');
+var aggregatorRouter = require('./routes/aggregator.endpoints');
 
 var app = express();
 
@@ -16,7 +16,7 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use('/', indexRouter);
+app.use('/', serviceRepoRouter);
 app.use('/aggregator', aggregatorRouter);
 
 // catch 404 and forward to error handler

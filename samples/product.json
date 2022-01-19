@@ -1,0 +1,90 @@
+{
+    "ser_id": 82,
+    "provider_id": 6,
+    "en_name": "Valu",
+    "ar_name": "فاليو",
+    "sp_config": {},
+    "data_fields": {
+        "mobile": {
+            "ar_label": "رقم الموبايل",
+            "en_label": "bill ID",
+            "field_name": "mobile",
+            "max_len": "11",
+            "min_len": "11",
+            "visible": true,
+            "required": true,
+            "input_type": "N",
+            "confirmed": true
+        },
+        "bills_count": {
+            "ar_label": "عدد الأقساط",
+            "en_label": "bills count",
+            "field_name": "bills_count",
+            "input_type": "S"
+        },
+        "total_payable_amount": {
+            "ar_label": "القيمة الكلية",
+            "en_label": " Total Payable Amount",
+            "field_name": "total_payable_amount",
+            "input_type": "S"
+        }
+    },
+    "amount": {
+        "ar_label": "القيمة",
+        "en_label": "amount",
+        "field_name": "amount",
+        "valueType": "range",
+        "range_min": 5,
+        "range_max": 10000,
+        "is_user_entered": true,
+        "calculate_fee": true,
+        "replace": [
+            "range_max",
+            "total_payable_amount"
+        ],
+        "credit": true
+    },
+    "service_charge": {
+        "ar_label": "تكلفة الخدمة",
+        "en_label": "service charge",
+        "field_name": "service_charge",
+        "slides": [
+            {
+                "scValueType": "F",
+                "fromValue": 1,
+                "toValue": 1000000000,
+                "scValue": 10
+            }
+        ]
+    },
+    "requests": [
+        {
+            "name": "valu_inq",
+            "order": 1,
+            "request_type": "I",
+            "inputs": [
+                "mobile"
+            ],
+            "outputs": [
+                "bills_count",
+                "total_payable_amount"
+            ]
+        },
+        {
+            "name": "valu_pay",
+            "order": 2,
+            "request_type": "P",
+            "inputs": [
+                "mobile",
+                "amount",
+                "service_charge"
+            ],
+            "outputs": []
+        }
+    ],
+    "main_biller": "معاملات مالية و بنوك",
+    "receipt": {
+        "template_id": 7,
+        "optional": false
+    }
+}
