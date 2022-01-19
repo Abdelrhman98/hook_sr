@@ -7,13 +7,22 @@ const {
     getAllProductsForServiceRepo
 } = require('../../DB/dataExtractors/products.exec')
 
-const { writeJson , readdirAndCheckGiven } = require("../../helpers/files/file")
+const { 
+    writeJson, 
+    readdirAndCheckGiven, 
+    moveFileToGivenPath,
+    getPathFilesList,
+    getFileExtension
+} = require("../../helpers/files/file")
 
 const path = require('path')
-const fs    = require('fs')
+
+
+
 class serviceRepoGenerator{
-    serviceRepoBasePath = "generators/serviceRepo"
-    generatedFileName   =  "serviceRepo"
+    serviceRepoBasePath = "generators/serviceRepo/"
+    generatedFileName   = "serviceRepo"
+    oldVersionsDir      = this.serviceRepoBasePath+"oldVersions"
     serviceRepoSample   = {}
     constructor(){
         
@@ -49,10 +58,26 @@ class serviceRepoGenerator{
         return readdirAndCheckGiven(this.serviceRepoBasePath,expectedVersion )
     }
 
+    async archiveToOldVersions(){
+        var dirs = getPathFilesList(this.serviceRepoBasePath)
+        dirs.forEach( file => {
+            let extension = getFileExtension(file)
+            if(extension == '.json'){ 
+                moveFileToGivenPath(this.serviceRepoBasePath+file, this.oldVersionsDir)
+            }
+        })
+    }
+
+    /* ------------------------------------------------------------------------------------------------------------- */
+    // todo=> get last version in mongo and read files in serviceRepo dir and chcek last file generated if it
+    // ! (true) already generated - do nothing
+    // ! (false) move old serviceRepo to oldVersions path then create new with last version
+    //? params forceCreate -> for forece generating evenIf generated file is last version
+    /* ------------------------------------------------------------------------------------------------------------- */
     async writeServiceRepo(forceCreate = false){
         if(!(await this.checkServiceRepoVersionWithCurrent())){
-            console.log("writed")
-            writeJson(path.resolve(`generators/serviceRepo/serviceRepo${await this.getVesion()}.json`),this.serviceRepoSample)
+            this.archiveToOldVersions()
+            writeJson(path.resolve(`${this.serviceRepoBasePath}/${this.generatedFileName}${await this.getVesion()}.json`),this.serviceRepoSample)
         }else{
             console.log("not writed")
         }
