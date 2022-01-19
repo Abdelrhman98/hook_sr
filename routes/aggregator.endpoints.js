@@ -15,9 +15,13 @@ router.post("/serviceList", (req, res, next)=>{
   getProductsWithIds(services).then( products => {
     keyValueProducts = createObjectKeyAndValue(products, "ser_id")
 
-    res.send({"serviceList":keyValueProducts})
-  })
-  
-  
+    res.send({"serviceList":keyValueProducts});
+  }) 
 })
+
+router.get("/test",(req, res)=>{
+  console.log("c")
+  res.send(process.env)
+})
+
 module.exports = router;

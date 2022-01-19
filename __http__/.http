@@ -1,5 +1,5 @@
 
-@host = http://localhost:3000
+@host =  http://localhost:6001
 ###
 GET {{host}}/aggregator
 
@@ -12,6 +12,8 @@ Content-Type: application/json
     "services":[19]
 }
 
+###
+GET {{host}}/aggregator/test
 
 ###
 GET {{host}}/serviceRepo/version

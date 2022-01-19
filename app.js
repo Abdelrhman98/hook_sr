@@ -1,9 +1,9 @@
 var createError = require('http-errors');
 var express = require('express');
 var bodyParser = require('body-parser')
-
+var http = require('http');
 //? MongoConnect
-const MongoUri = require('./connections/mongoClient')
+// const MongoUri = require('./connections/mongoClient')
 
 
 var serviceRepoRouter = require('./routes/serviceRepo.endpoints');
@@ -24,8 +24,12 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.listen(3000,()=>{
-  console.log("do")
-})
+http.createServer(app).listen(6001,()=>{
+  console.log("sdo0000000000000000000", process.env)
+});
+
+// app.listen(6001,()=>{
+//   console.log("do", process.env)
+// })
 
 module.exports = app;

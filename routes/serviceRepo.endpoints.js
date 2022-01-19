@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     if(err)
       console.log(err)
     console.log(doc)
-    res.send(doc)
+    res.send(doc); 
   })
 });
 
