@@ -14,4 +14,4 @@ Content-Type: application/json
 
 
 ###
-GET {{host}}
+GET {{host}}/serviceRepo/version
