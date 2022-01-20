@@ -15,3 +15,23 @@ Content-Type: application/json
 
 ###
 GET {{host}}/serviceRepo/version
+
+###
+
+
+######
+POST http://10.22.1.186:3002/report/schedulers/run
+Content-Type: application/json
+
+{
+  "date":"2022-01-20",
+  "reportConfigId":"61e8179a25c4510a3afde3d4",
+  "forceRun":1,
+    "mailerReceivers":{
+      "to":["a.soliman@egyptsmartcards.com"]
+  }
+}
+
+###
+GET http://10.22.1.186:3003/billers
+Content-Type: "application/json"

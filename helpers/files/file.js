@@ -1,6 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-function writeJsonToFile(file, json){
+const fs    = require('fs')
+const path  = require('path')
+const fse   = require('fs-extra')
+const res = require('express/lib/response')
+function writeJsonToFile( file, json ){
     fs.writeFile(file, JSON.stringify(json),(err)=>{
         if(err)
             return err
@@ -8,7 +10,7 @@ function writeJsonToFile(file, json){
     return true;
 }
 
-function readdirAndCheckGiven( givenDir , expected ){
+function readdirAndCheckGiven( givenDir, expected ){
     return new Promise((resolve, reject)=>{
         var dirs = fs.readdirSync(path.resolve(givenDir))
         dirs.forEach(file=>{
@@ -19,7 +21,39 @@ function readdirAndCheckGiven( givenDir , expected ){
     })
 }
 
+function moveFileToGivenPath( CurrentPath, targetPath ){
+    
+    return new Promise((resolve, reject)=>{
+        fse.move(resolvePath(CurrentPath), resolvePath(targetPath),(err)=>{
+            if(err) {
+                console.log(err)
+                reject(err)
+            }
+                resolve(true)
+        })
+        resolve(false)
+    })
+}
+
+//@@Private
+function getFileExtension( file ){
+    return file.substring(file.lastIndexOf('.'))
+}
+
+function resolvePath( dir ){
+    return path.resolve(dir)
+}
+
+function getPathFilesList( givenDir ){
+        var dirs = fs.readdirSync(path.resolve(givenDir))
+        return dirs;
+}
+
 module.exports = {
     writeJson:writeJsonToFile,
-    readdirAndCheckGiven:readdirAndCheckGiven
+    readdirAndCheckGiven:readdirAndCheckGiven,
+    moveFileToGivenPath:moveFileToGivenPath,
+    getPathFilesList:getPathFilesList,
+    getFileExtension:getFileExtension,
+    resolvePath:resolvePath
 }
