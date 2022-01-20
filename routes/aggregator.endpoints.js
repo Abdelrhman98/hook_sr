@@ -12,7 +12,11 @@ router.get('/', function(req, res, next) {
 
 router.post("/serviceList", (req, res, next)=>{
   var {services} =  req.body
-  getProductsWithIds(services).then( products => {
+  var parsedServices = []
+  services.forEach(element => {
+      parsedServices.push(parseInt(element))
+  });
+  getProductsWithIds(parsedServices).then( products => {
     keyValueProducts = createObjectKeyAndValue(products, "ser_id")
 
     res.send({"serviceList":keyValueProducts});
@@ -20,7 +24,8 @@ router.post("/serviceList", (req, res, next)=>{
 })
 
 router.get("/test",(req, res)=>{
-  console.log("c")
+
+  console.log("ccccccccccccccccccccccccccc")
   res.send(process.env)
 })
 

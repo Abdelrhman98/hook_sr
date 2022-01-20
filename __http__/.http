@@ -37,3 +37,13 @@ Content-Type: application/json
 ###
 GET http://10.22.1.186:3003/billers
 Content-Type: "application/json"
+###
+GET http://localhost:6001/seed
+
+###
+POST http://localhost:6001/aggregator/serviceList
+Content-Type: application/json
+
+{
+  "services":["1","2","3"]
+}
