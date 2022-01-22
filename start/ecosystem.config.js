@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: `BP_Config_${process.env.environment}`,
+            name: `BP_Config_${process.env.ENV}`,
             interpreter: "node@16.0.0",
             script: "../app.js",
             autorestart: false,

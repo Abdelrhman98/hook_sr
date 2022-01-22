@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-http.createServer(app).listen(3000,()=>{
+http.createServer(app).listen(6001 || process.env.PORT,()=>{
   console.log("sdo0000000000000000000")
 });
 
@@ -32,4 +32,4 @@ http.createServer(app).listen(3000,()=>{
 //   console.log("do", process.env)
 // })
 
-module.exports = app;
+//module.exports = app;
