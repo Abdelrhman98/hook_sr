@@ -1,21 +1,22 @@
 module.exports = {
     apps: [
         {
-            name: `BP_Config_${process.env.environment}`,
+            name: `BP_Config_${process.env.ENV}`,
             interpreter: "node@16.0.0",
             script: "../app.js",
             autorestart: false,
             time: true,
-            watch: false,
+            watch: true,
             kill_timeout: 60000,
-            env_LOCAL: {
-                SER_REPO_HOST: "127.0.0.1",
-                ORA_SDTZ: 'UTC'
-            },
             env: {
+                ENV:"local",
+                SER_REPO_HOST: "127.0.0.1",
+                PORT:3000
+            },
+            env_development: {
+                ENV:"dev",
                 SER_REPO_HOST: "10.22.1.183",
-                PORT: 6001,
-                ORA_SDTZ: 'UTC'
+                PORT: 6001
             }
         }
     ]
