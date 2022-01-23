@@ -50,3 +50,9 @@ Content-Type: application/json
 
 ###
 GET {{host}}/getEnv
+
+###
+GET {{host}}/
+
+###
+GET {{host}}/test/func

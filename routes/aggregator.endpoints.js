@@ -10,16 +10,21 @@ router.get('/', function(req, res, next) {
   res.send('aggregator');
 });
 
-router.post("/serviceList", (req, res, next)=>{
+
+router.post("/serviceList", async(req, res, next)=>{
   var {services} =  req.body
   var parsedServices = []
+  const inst = new serviceRepoGenerator()
+  const version = await inst.getVesion()
   services.forEach(element => {
       parsedServices.push(parseInt(element))
   });
+  
   getProductsWithIds(parsedServices).then( products => {
     keyValueProducts = createObjectKeyAndValue(products, "ser_id")
-
-    res.send({"availableServices":parsedServices,"serviceList":keyValueProducts});
+    
+    
+    res.send({"version": version,"availableServices":parsedServices,"serviceList":keyValueProducts});
   }) 
 })
 

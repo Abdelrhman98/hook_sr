@@ -12,7 +12,8 @@ const {
     readdirAndCheckGiven, 
     moveFileToGivenPath,
     getPathFilesList,
-    getFileExtension
+    getFileExtension,
+    pathIsExistes
 } = require("../../helpers/files/file")
 
 const path = require('path')
@@ -73,6 +74,7 @@ class serviceRepoGenerator{
     // ! (true) already generated - do nothing
     // ! (false) move old serviceRepo to oldVersions path then create new with last version
     //? params forceCreate -> for forece generating evenIf generated file is last version
+    //! enhance => adding force run
     /* ------------------------------------------------------------------------------------------------------------- */
     async writeServiceRepo(forceCreate = false){
         if(!(await this.checkServiceRepoVersionWithCurrent())){
@@ -81,8 +83,14 @@ class serviceRepoGenerator{
         }else{
             console.log("not writed")
         }
-        
-        
+    }
+
+    async getLatestServiceRepoPath(){
+        const latestVersion = await this.getVesion()
+        const serviceRepo = this.generatedFileName + latestVersion + '.json'
+        const result = await pathIsExistes('./test/')
+        console.log(result)
+        //res.send(result)
     }
 }
 

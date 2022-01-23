@@ -49,11 +49,19 @@ function getPathFilesList( givenDir ){
         return dirs;
 }
 
+function pathIsExistes( path ){
+
+    return fs.promises.access(path, fs.constants.F_OK)
+    .then(() => true)
+    .catch(() => false)
+}
+
 module.exports = {
     writeJson:writeJsonToFile,
     readdirAndCheckGiven:readdirAndCheckGiven,
     moveFileToGivenPath:moveFileToGivenPath,
     getPathFilesList:getPathFilesList,
     getFileExtension:getFileExtension,
-    resolvePath:resolvePath
+    resolvePath:resolvePath,
+    pathIsExistes:pathIsExistes
 }

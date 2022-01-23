@@ -10,12 +10,12 @@ module.exports = {
             kill_timeout: 60000,
             env: {
                 ENV:"local",
-                SER_REPO_HOST: "127.0.0.1",
+                HOST: "127.0.0.1",
                 PORT:3000
             },
             env_development: {
                 ENV:"dev",
-                SER_REPO_HOST: "10.22.1.183",
+                HOST: "10.22.1.183",
                 PORT: 6001
             }
         }
