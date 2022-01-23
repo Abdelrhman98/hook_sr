@@ -19,7 +19,7 @@ router.post("/serviceList", (req, res, next)=>{
   getProductsWithIds(parsedServices).then( products => {
     keyValueProducts = createObjectKeyAndValue(products, "ser_id")
 
-    res.send({"serviceList":keyValueProducts});
+    res.send({"availableServices":parsedServices,"serviceList":keyValueProducts});
   }) 
 })
 

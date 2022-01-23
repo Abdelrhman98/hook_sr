@@ -37,6 +37,10 @@ router.get('/seed',(req, res, next)=>{
   
 })
 
+router.get('/getEnv',(req, res, next)=>{
+  res.send(process.env.ENV)
+})
+
 module.exports = router;
 
 //12.51
