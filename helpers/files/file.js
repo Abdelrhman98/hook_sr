@@ -1,7 +1,7 @@
 const fs    = require('fs')
 const path  = require('path')
 const fse   = require('fs-extra')
-const res = require('express/lib/response')
+
 function writeJsonToFile( file, json ){
     fs.writeFile(file, JSON.stringify(json),(err)=>{
         if(err)
@@ -22,7 +22,6 @@ function readdirAndCheckGiven( givenDir, expected ){
 }
 
 function moveFileToGivenPath( CurrentPath, targetPath ){
-    
     return new Promise((resolve, reject)=>{
         fse.move(resolvePath(CurrentPath), resolvePath(targetPath),(err)=>{
             if(err) {
@@ -49,11 +48,13 @@ function getPathFilesList( givenDir ){
         return dirs;
 }
 
-function pathIsExistes( path ){
-
-    return fs.promises.access(path, fs.constants.F_OK)
-    .then(() => true)
-    .catch(() => false)
+function ensuerPath( path ){
+    return fse.pathExists(path).then((exec)=>{
+        return exec
+    }).catch((err)=>{
+        console.log("FUNC ensuerPath err => ",err)
+        return false
+    })
 }
 
 module.exports = {
@@ -63,5 +64,6 @@ module.exports = {
     getPathFilesList:getPathFilesList,
     getFileExtension:getFileExtension,
     resolvePath:resolvePath,
-    pathIsExistes:pathIsExistes
+    ensuerPath:ensuerPath
+    
 }

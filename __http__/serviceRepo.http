@@ -1,0 +1,57 @@
+@host =  http://localhost:3000
+
+
+###
+GET http://localhost:6001/seed
+
+###
+GET {{host}}/getEnv
+
+###
+GET {{host}}/get_service_Repo
+Content-Type: application/json
+###
+GET {{host}}/
+
+###
+GET {{host}}/test/func
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###
+GET http://10.22.1.186:3003/billers
+Content-Type: "application/json"
+
+
+######
+POST http://10.22.1.186:3002/report/schedulers/run
+Content-Type: application/json
+
+{
+  "date":"2022-01-20",
+  "reportConfigId":"61e8179a25c4510a3afde3d4",
+  "forceRun":1,
+    "mailerReceivers":{
+      "to":["a.soliman@egyptsmartcards.com"]
+  }
+}

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "ENV=local nodemon app.js"
+    "start": "ENV=local nodemon app.js",
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
@@ -13,5 +14,9 @@
     "fs-extra": "^10.0.0",
     "http-errors": "~1.6.3",
     "mongoose": "^6.1.7"
+  },
+  "devDependencies": {
+    "axios": "^0.25.0",
+    "jest": "^27.4.7"
   }
 }

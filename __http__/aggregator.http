@@ -1,0 +1,13 @@
+@host =  http://localhost:3000
+@aggregatorURL = {{host}}/aggregator
+###
+GET {{aggregatorURL}}
+
+
+###Get service List ###
+POST {{aggregatorURL}}/serviceList
+Content-Type: application/json
+
+{
+    "services":[1,2,3]
+}
