@@ -9,6 +9,8 @@ const allProducts = require('./ser.json')
 const serviceRepoGenerator = require('../generators/serviceRepo/serviceRepo.gen')
 const versioningModel = require('../DB/models/versioning.model')
 
+const {readJsonFromFile} =  require('../helpers/files/file')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const newVersion = versioningModel({versionFor:"serviceRepo", version:"12.51"})
@@ -49,9 +51,9 @@ router.get('/seed',(req, res, next)=>{
 router.get("/get_service_Repo", async(req, res, next)=>{
 
   const inst = new serviceRepoGenerator();
-  const { serviceRepoPath } = await inst.generator_logic(true)
-  
-  console.log(serviceRepoPath)
+  const { serviceRepoPath , type} = await inst.generator_logic()
+
+  console.log(serviceRepoPath, type)
   const rs = fs.createReadStream(serviceRepoPath);
   res.setHeader("Content-Disposition", "attachment; serviceRepo.json");
   rs.pipe(res)
@@ -68,12 +70,14 @@ router.get('/getEnv',(req, res, next)=>{
 router.get('/test/func',async (req, res, next)=>{
   const inst = new serviceRepoGenerator()
   // const result = await inst.getLatestServiceRepoPath()
-  const result = await inst.generator_logic(true)
-  
+  const result = await inst.generator_logic()
   console.log(result)
   res.send(result)
 })
 
+router.get('/test', (req, res, next)=>{
+  readJsonFromFile(path.resolve('../generators/serviceRepo/serviceRepo12.55.json'))
+})
 module.exports = router;
 
 //12.51

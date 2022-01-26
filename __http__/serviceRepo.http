@@ -14,7 +14,10 @@ Content-Type: application/json
 GET {{host}}/
 
 ###
-GET {{host}}/test/func
+GET {{host}}/test/func22 
+
+###
+GET {{host}}/test
 
 
 

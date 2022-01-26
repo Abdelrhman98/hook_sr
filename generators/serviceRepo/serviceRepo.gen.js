@@ -16,7 +16,10 @@ const {
     getFileExtension,
     ensuerPath
 } = require("../../helpers/files/file")
-
+const {
+    getDateYMD,
+    getDateYMDHM
+} = require('../../helpers/date/date')
 const path = require('path')
 
 class serviceRepoGenerator{
@@ -50,15 +53,10 @@ class serviceRepoGenerator{
             responseObject.type = "Generated"
         }else{
             safe = true
-            //!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
             responseObject.type = "Cached"
-            // return current <latest>
         }
-        if(safe == true){
-            console.log("SSSSSSSSSSSSSSSSSSS")
+        if(safe == true)
             return responseObject
-        }
-        
     }
 
     /* ------------------------------------------------------------------------------------------------------------- */
@@ -102,7 +100,9 @@ class serviceRepoGenerator{
             let extension = getFileExtension(file)
             if(extension == '.json' && latestServiceRepo != file){
                 console.log("movedfile", latestServiceRepo, file)
-                moveFileToGivenPath(path.resolve(this.serviceRepoBasePath+'/'+file), path.resolve(this.oldVersionsDir+'/'+file))
+                moveFileToGivenPath(
+                    path.resolve(this.serviceRepoBasePath+'/'+file), 
+                    path.resolve(this.oldVersionsDir+'/'+getDateYMDHM()+'_'+file))
             }
         })
     }
@@ -136,10 +136,13 @@ class serviceRepoGenerator{
             if(ensuerPath(serviceRepo)){
                 return serviceRepo
             }else{
+                
                 return "err"
             }
         }
     }
+
+
 
     /* ------------------------------------------------------------------------------------------------------------- */
     // todo=> return full latest service repo path <expected>

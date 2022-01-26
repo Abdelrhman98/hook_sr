@@ -10,6 +10,17 @@ function writeJsonToFile( file, json ){
     return true;
 }
 
+function readJsonFromFile( file ){
+    return fse.readJson(file)
+    .then(jsonData =>{
+        return jsonData
+    })
+    .catch(err=>{
+        console.log(err)
+        return err
+    })
+}
+
 function readdirAndCheckGiven( givenDir, expected ){
     return new Promise((resolve, reject)=>{
         var dirs = fs.readdirSync(path.resolve(givenDir))
@@ -64,6 +75,7 @@ module.exports = {
     getPathFilesList:getPathFilesList,
     getFileExtension:getFileExtension,
     resolvePath:resolvePath,
-    ensuerPath:ensuerPath
+    ensuerPath:ensuerPath,
+    readJsonFromFile:readJsonFromFile
     
 }
