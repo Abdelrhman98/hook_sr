@@ -3,7 +3,7 @@ const productModel = require('../models/product.model')
 function getProductsWithIds(ids=[])
 {
     //return productModel.find({ser_id:{$in:ids}}).exec()
-    return productModel.aggregate([
+    return  productModel.aggregate([
         { $match:   {ser_id:{$in:ids }  }},
         { $project: {
                         _id:0,
@@ -42,10 +42,25 @@ function getAllProductsForServiceRepo(){
         }).exec()
 }
 
+
+function addNewProductToServiceRepo( product ){
+    const newProduct = productModel(product)
+    return newProduct.save()
+
+}
+
+function getLastServiceId(){
+    return productModel.find().sort({'ser_id':-1}).limit(1).exec()
+}
+
 module.exports = {
     getProductsWithIds,
-    getAllProductsForServiceRepo
+    getAllProductsForServiceRepo,
+    getLastServiceId,
+    addNewProductToServiceRepo
 }
+
+
 
 /* //todo db.fins.aggregate([
     { $match:   {ser_id:{$in:[1,2] }  }},

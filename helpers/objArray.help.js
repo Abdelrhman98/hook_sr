@@ -9,7 +9,14 @@ function createObjectKeyAndValue(array, key){
     return genObject
 }
 
-
+function createErrorArrayUsingKey(array, key){
+    var errObject = {}
+    array.forEach((element) => {
+        errObject[element.context.label] = element[key]
+    })
+    return errObject
+}
 module.exports = {
-    createObjectKeyAndValue
+    createObjectKeyAndValue,
+    createErrorArrayUsingKey
 }

@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 var product_schema = new mongoose.Schema({
     ser_id:{
         type:Number,
-        required:true,
         unique:true,
         index:true
     },
@@ -20,15 +19,16 @@ var product_schema = new mongoose.Schema({
         type:Object
     },
     description:{
-        type:String
+        type:String,
     },
     en_name:{
         type:String,
+        default:''
         //required:true,
     },
     sp_config:{
         type:Object,
-        required:true,
+        default:{}
     },
     amount:{
         type:Object,
@@ -55,5 +55,14 @@ var product_schema = new mongoose.Schema({
     }
 });
 
+
+product_schema.pre("save", async function(next){
+    if(this.isNew){
+        let x = await fins.find().sort({'ser_id':-1}).limit(1).exec()
+        this.ser_id = x[0].ser_id + 1
+    }
+    next()
+})
+const fins = mongoose.model('fins', product_schema);
 //Export the model  
-module.exports = mongoose.model('fins', product_schema);
+module.exports = fins

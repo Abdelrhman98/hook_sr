@@ -5,12 +5,22 @@ const fs = require('fs')
 const path = require('path')
 
 const productsModel = require('../DB/models/product.model')
-const allProducts = require('./ser.json')
+// const allProducts = require('./ser.json')
 const serviceRepoGenerator = require('../generators/serviceRepo/serviceRepo.gen')
 const versioningModel = require('../DB/models/versioning.model')
 
 const {readJsonFromFile} =  require('../helpers/files/file')
+const {addNewProduct} = require('../controllers/product.controller')
 
+const Validator =  require('../middlewares/validators.middleware')
+
+router.post("/add_new_service",Validator('product') ,(req, res, next)=>{
+  const ser = req.body
+  console.log(ser);
+  addNewProduct(ser)
+  
+  res.send("good")
+})
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const newVersion = versioningModel({versionFor:"serviceRepo", version:"12.51"})
@@ -29,18 +39,23 @@ router.get('/serviceRepo/version',async (req, res, next)=>{
   res.send({ version:await inst.getVesion()})
 })
 
-router.get('/seed',(req, res, next)=>{
-  allProducts.data.forEach((ele)=>{
-    var x = productsModel(ele)
-    
-    x.save((err, doc)=>{
-      if(err)
-        console.log(err)
-      console.log(doc)
-    })
-  })
+
+router.post('/service', (req, res, next)=>{
   
 })
+
+// router.get('/seed',(req, res, next)=>{
+//   allProducts.data.forEach((ele)=>{
+//     var x = productsModel(ele)
+    
+//     x.save((err, doc)=>{
+//       if(err)
+//         console.log(err)
+//       console.log(doc)
+//     })
+//   })
+  
+// })
 
 
 /* ------------------------------------------------------------------------------------------------------------- */
@@ -48,7 +63,7 @@ router.get('/seed',(req, res, next)=>{
   //? logic =>> scan file in service repo dir if found one version pass it otherwise path latest with checking 
   //?           latest from mongo collection
 /* ------------------------------------------------------------------------------------------------------------- */
-router.get("/get_service_Repo", async(req, res, next)=>{
+router.get("/service_Repo", async(req, res, next)=>{
 
   const inst = new serviceRepoGenerator();
   const { serviceRepoPath , type} = await inst.generator_logic()
@@ -63,7 +78,6 @@ router.get("/get_service_Repo", async(req, res, next)=>{
 router.get('/getEnv',(req, res, next)=>{
   res.send(process.env.ENV)
 })
-
 
 
 
