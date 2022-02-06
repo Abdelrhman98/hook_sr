@@ -6,11 +6,11 @@ const productValidator = joi.object({
     en_name         : joi.string().required().min(1).max(100),
     description     : joi.string().allow(null, ''),
     sp_config       : joi.object().allow({}),
-    amount          : joi.object(),
-    service_charge  : joi.object(),
-    requests        : joi.array(),
+    amount          : joi.object().required(),
+    service_charge  : joi.object().required(),
+    requests        : joi.array().required(),
     main_biller     : joi.string().required().min(1),
-    receipt         : joi.object()
+    receipt         : joi.object({template_id:joi.number().required(), optional:joi.boolean()}).required()
 }).unknown(true)
 
 

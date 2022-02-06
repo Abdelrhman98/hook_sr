@@ -1,0 +1,63 @@
+{
+    "DB/DBCredentials/mongoConnection.js": [],
+    "DB/dataExtractors/products.exec.js": [
+        "DB/models/product.model.js"
+    ],
+    "DB/dataExtractors/sector.exec.js": [
+        "DB/models/sectors.model.js"
+    ],
+    "DB/dataExtractors/version.exec.js": [
+        "DB/models/versioning.model.js"
+    ],
+    "DB/models/hooks/sector.hooks.js": [
+        "DB/dataExtractors/sector.exec.js"
+    ],
+    "DB/models/product.model.js": [
+        "DB/models/hooks/sector.hooks.js"
+    ],
+    "DB/models/sectors.model.js": [],
+    "DB/models/versioning.model.js": [],
+    "app.js": [
+        "DB/dataExtractors/products.exec.js",
+        "DB/models/product.model.js",
+        "connections/mongoClient.js",
+        "routes/aggregator.endpoints.js",
+        "routes/serviceRepo.endpoints.js"
+    ],
+    "connections/mongoClient.js": [
+        "DB/DBCredentials/mongoConnection.js"
+    ],
+    "controllers/product.controller.js": [
+        "DB/dataExtractors/products.exec.js"
+    ],
+    "generators/serviceRepo/serviceRepo.gen.js": [
+        "DB/dataExtractors/products.exec.js",
+        "DB/dataExtractors/version.exec.js",
+        "helpers/date/date.js",
+        "helpers/files/file.js"
+    ],
+    "helpers/date/date.js": [],
+    "helpers/files/file.js": [],
+    "helpers/objArray.help.js": [],
+    "middlewares/validators.middleware.js": [
+        "helpers/objArray.help.js",
+        "validators/validators.js"
+    ],
+    "routes/aggregator.endpoints.js": [
+        "DB/dataExtractors/products.exec.js",
+        "generators/serviceRepo/serviceRepo.gen.js",
+        "helpers/objArray.help.js"
+    ],
+    "routes/serviceRepo.endpoints.js": [
+        "DB/models/product.model.js",
+        "DB/models/versioning.model.js",
+        "controllers/product.controller.js",
+        "generators/serviceRepo/serviceRepo.gen.js",
+        "helpers/files/file.js",
+        "middlewares/validators.middleware.js"
+    ],
+    "validators/schema/product.validator.js": [],
+    "validators/validators.js": [
+        "validators/schema/product.validator.js"
+    ]
+}

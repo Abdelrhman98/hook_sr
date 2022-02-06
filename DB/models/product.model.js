@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'); 
-
+const { hook_addProductToSector } = require('./hooks/sector.hooks')
+const { hook_updateVersionForServiceRepo } = require('./hooks/version.hooks')
 // Declare the Schema of the Mongo model
 var product_schema = new mongoose.Schema({
     ser_id:{
@@ -56,13 +57,28 @@ var product_schema = new mongoose.Schema({
 });
 
 
+
+async function hook_generateSerIdBasedOnLastService(){
+    //console.log(this)
+    let last_id = await fins.find().sort({'ser_id':-1}).limit(1).exec()
+    this.ser_id = last_id[0].ser_id + 1
+    //return 
+}
+
 product_schema.pre("save", async function(next){
     if(this.isNew){
-        let x = await fins.find().sort({'ser_id':-1}).limit(1).exec()
-        this.ser_id = x[0].ser_id + 1
+        await hook_generateSerIdBasedOnLastService.bind(this)()
+        
     }
     next()
 })
+
+product_schema.post('save', async function(){
+    hook_addProductToSector.bind(this)()
+    hook_updateVersionForServiceRepo()
+})
+
+
 const fins = mongoose.model('fins', product_schema);
-//Export the model  
+
 module.exports = fins

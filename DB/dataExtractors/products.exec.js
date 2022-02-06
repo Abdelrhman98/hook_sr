@@ -49,8 +49,8 @@ function addNewProductToServiceRepo( product ){
 
 }
 
-function getLastServiceId(){
-    return productModel.find().sort({'ser_id':-1}).limit(1).exec()
+async function getLastServiceId(){
+    return await productModel.find().sort({'ser_id':-1}).limit(1).exec()
 }
 
 module.exports = {

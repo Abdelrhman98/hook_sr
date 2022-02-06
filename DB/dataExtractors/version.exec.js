@@ -5,6 +5,11 @@ function getVersionByName(name){
 }
 
 
+async function updateVersionByName( name , value){
+    return await versionModel.findOneAndUpdate({versionFor:name},{$set:{version:value}}).exec()
+}
+
 module.exports = {
-    getVersionByName
+    getVersionByName,
+    updateVersionByName
 }

@@ -20,7 +20,7 @@ module.exports = function(validator) {
             //! If validation error occurs call next with HTTP 422. Otherwise HTTP 500
             if(err.isJoi) {
                 const joiErrors = createErrorArrayUsingKey(err['details'], 'message')
-                res.send({message: joiErrors})
+                res.send({validationErrors: joiErrors})
                 //return next()
             }
                 

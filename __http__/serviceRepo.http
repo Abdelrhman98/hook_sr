@@ -122,7 +122,7 @@ Content-Type: application/json
 
 {
     "provider_id": 5,
-    "ar_name": "زكاة",
+    "ar_name": "احمد عبدالله",
     "en_name":"asdasd",
     "description": "مصر الخير تبرعات",
     "sp_config":{},
@@ -166,7 +166,8 @@ Content-Type: application/json
     "receipt": {
         "template_id": 1,
         "optional": false
-    }
+    },
+    "sector":"تجربة"
 }
 
 
