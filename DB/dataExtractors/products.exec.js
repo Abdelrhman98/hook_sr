@@ -53,11 +53,21 @@ async function getLastServiceId(){
     return await productModel.find().sort({'ser_id':-1}).limit(1).exec()
 }
 
+async function getServiceById(service_id){
+    return await productModel.findOne({ser_id : service_id}).exec()
+}
+
+async function updateProductById( productId, product ){
+    return await productModel.findOneAndUpdate({ser_id:productId},{$set:product}).exec()
+}
+
 module.exports = {
     getProductsWithIds,
     getAllProductsForServiceRepo,
     getLastServiceId,
-    addNewProductToServiceRepo
+    addNewProductToServiceRepo,
+    getServiceById,
+    updateProductById
 }
 
 

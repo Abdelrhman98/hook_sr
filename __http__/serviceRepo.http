@@ -170,6 +170,64 @@ Content-Type: application/json
     "sector":"تجربة"
 }
 
+###
+POST {{host}}/update_service/890
+Content-Type: application/json
+
+{
+    "provider_id": 5,
+    "ar_name": "احمد عبدالله",
+    "en_name":"ahmed Abdullah",
+    "description": "مصر الخير تبرعات",
+    "sp_config":{},
+    "amount": {
+        "ar_label": "القيمة",
+        "en_label": "amount",
+        "field_name": "amount",
+        "valueType": "range",
+        "range_min": 10,
+        "range_max": 1000,
+        "is_user_entered": true,
+        "calculate_fee": false,
+        "credit": true
+    },
+    "service_charge": {
+        "ar_label": "تكلفة الخدمة",
+        "en_label": "service charge",
+        "field_name": "service_charge",
+        "slides": [
+            {
+                "fromValue": 0,
+                "toValue": 1000,
+                "scValue": 0,
+                "scValueType": "P"
+            }
+        ]
+    },
+    "requests": [
+        {
+            "name": "damen_pay",
+            "order": 1,
+            "request_type": "P",
+            "inputs": [
+                "amount",
+                "mobile"
+            ],
+            "outputs": []
+        }
+    ],
+    "main_biller": "مصر الخير",
+    "receipt": {
+        "template_id": 1,
+        "optional": false
+    },
+    "sector":"تجربة"
+}
+
+
+###
+GET {{host}}/service/1000
+
 
 
 

@@ -68,10 +68,14 @@ async function hook_generateSerIdBasedOnLastService(){
 product_schema.pre("save", async function(next){
     if(this.isNew){
         await hook_generateSerIdBasedOnLastService.bind(this)()
-        
     }
     next()
 })
+
+product_schema.post('findOneAndUpdate', async function(){
+    hook_updateVersionForServiceRepo()
+})
+
 
 product_schema.post('save', async function(){
     hook_addProductToSector.bind(this)()

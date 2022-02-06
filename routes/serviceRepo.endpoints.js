@@ -4,40 +4,37 @@ var router = express.Router();
 const fs = require('fs')
 const path = require('path')
 
-const productsModel = require('../DB/models/product.model')
-// const allProducts = require('./ser.json')
 const serviceRepoGenerator = require('../generators/serviceRepo/serviceRepo.gen')
-const versioningModel = require('../DB/models/versioning.model')
 
-const {readJsonFromFile} =  require('../helpers/files/file')
-const {addNewProduct} = require('../controllers/product.controller')
+const { readJsonFromFile } =  require('../helpers/files/file')
+const { addNewProduct ,getService, updateProduct } = require('../controllers/product.controller')
 
 const Validator =  require('../middlewares/validators.middleware')
 
-router.post("/add_new_service",Validator('product') ,(req, res, next)=>{
-  const ser = req.body
-  console.log(ser);
-  addNewProduct(ser)
-  
-  res.send("good")
-})
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  const newVersion = versioningModel({versionFor:"serviceRepo", version:"12.51"})
-  newVersion.save((err, doc)=>{
-    if(err)
-      console.log(err)
-    console.log(doc)
-    res.send(doc); 
-  })
-});
 
+router.get("/service/:id", async (req,res,next)=>{
+  res.send(await getService(req.params.id))
+})
+
+router.post("/add_new_service",Validator('product') , async (req, res, next)=>{
+  res.send(await addNewProduct(req.body))
+})
+
+router.post('/update_service/:id',Validator('product') , async (req, res, next)=>{
+  res.send(await updateProduct(req.params.id, req.body))
+})
 
 router.get('/serviceRepo/version',async (req, res, next)=>{
   var inst = new serviceRepoGenerator()  
   inst.generateServiceRepo()
   res.send({ version:await inst.getVesion()})
 })
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+
+});
+
 
 
 router.post('/service', (req, res, next)=>{
@@ -64,7 +61,6 @@ router.post('/service', (req, res, next)=>{
   //?           latest from mongo collection
 /* ------------------------------------------------------------------------------------------------------------- */
 router.get("/service_Repo", async(req, res, next)=>{
-
   const inst = new serviceRepoGenerator();
   const { serviceRepoPath , type} = await inst.generator_logic()
 
@@ -82,6 +78,7 @@ router.get('/getEnv',(req, res, next)=>{
 
 
 router.get('/test/func',async (req, res, next)=>{
+
   const inst = new serviceRepoGenerator()
   // const result = await inst.getLatestServiceRepoPath()
   const result = await inst.generator_logic()
@@ -90,6 +87,7 @@ router.get('/test/func',async (req, res, next)=>{
 })
 
 router.get('/test', (req, res, next)=>{
+
   readJsonFromFile(path.resolve('../generators/serviceRepo/serviceRepo12.55.json'))
 })
 module.exports = router;

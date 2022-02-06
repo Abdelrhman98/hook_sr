@@ -1,12 +1,28 @@
 const {
-    addNewProductToServiceRepo
+    addNewProductToServiceRepo,
+    getServiceById,
+    updateProductById
 } = require('../DB/dataExtractors/products.exec')
 
 function addNewProduct( product ){
-    addNewProductToServiceRepo(product).then((doc)=>{
-        // console.log(doc)
+    return addNewProductToServiceRepo(product).then((doc)=>{
+        return doc
     })
-    
 }
 
-module.exports ={addNewProduct}
+function getService(product_id){
+    return getServiceById(product_id).then((doc)=>{
+        if(doc)
+            return doc
+        return `service not found ${product_id}`
+    })
+}
+
+async function updateProduct( productId, product ){
+    return await updateProductById( productId, product)
+}
+module.exports ={
+    addNewProduct,
+    getService,
+    updateProduct
+}
