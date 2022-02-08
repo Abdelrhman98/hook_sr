@@ -16,7 +16,16 @@ function createErrorArrayUsingKey(array, key){
     })
     return errObject
 }
+
+function createObjectFromArrayAndSetValue(array, value=1){
+    let obj = {}
+    array.forEach( ele =>{
+        obj[ele] = value
+    })
+    return obj
+}
 module.exports = {
     createObjectKeyAndValue,
-    createErrorArrayUsingKey
+    createErrorArrayUsingKey,
+    createObjectFromArrayAndSetValue
 }

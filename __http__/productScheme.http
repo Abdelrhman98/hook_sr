@@ -1,0 +1,25 @@
+@host =  http://localhost:3000
+
+POST {{host}}/scheme/add_scheme
+Content-Type: application/json
+
+{
+    "schemeFor":"aggregator",
+    "scheme": ["ar_name","ser_id","description","en_name", "amount","service_charge","requests","main_biller"],
+    "schemeType":"with_scheme"
+}
+
+
+###
+POST http://10.22.1.186:3003/billers?cache=false
+Content-Type: application/json
+
+{
+    "id" : "871",
+    "en_name":"orange control",
+    "ar_name":"باقة نظامك الشهري",
+    "code" : "1",
+    "status" : "1",
+    "main_biller_id" : "14",
+    "service_provider_id" : "2"
+}

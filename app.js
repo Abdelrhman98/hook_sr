@@ -16,7 +16,7 @@ const PORT = 3000||process.env.PORT
 //? routers
 var serviceRepoRouter = require('./routes/serviceRepo.endpoints');
 var aggregatorRouter = require('./routes/aggregator.endpoints');
-
+var productSchemeRouter = require('./routes/productScheme.endpoints')
 var app = express();
 
 
@@ -42,8 +42,9 @@ app.post('/asd',async (req, res, next)=>{
   
 })
 //?routing 
-app.use('/', serviceRepoRouter);
-app.use('/aggregator', aggregatorRouter);
+app.use('/',            serviceRepoRouter);
+app.use('/aggregator' , aggregatorRouter  );
+app.use('/scheme',      productSchemeRouter)
 
 //?error handling
 // catch 404 and forward to error handler

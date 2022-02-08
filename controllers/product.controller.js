@@ -19,7 +19,12 @@ function getService(product_id){
 }
 
 async function updateProduct( productId, product ){
-    return await updateProductById( productId, product)
+    const updatedProduct = await updateProductById( productId, product)
+    if(updatedProduct){
+        return updatedProduct
+    }else{
+        return "service Id not fount"
+    }
 }
 module.exports ={
     addNewProduct,
