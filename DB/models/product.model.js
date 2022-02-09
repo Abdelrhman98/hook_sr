@@ -56,8 +56,6 @@ var product_schema = new mongoose.Schema({
     }
 });
 
-
-
 async function hook_generateSerIdBasedOnLastService(){
     //console.log(this)
     let last_id = await fins.find().sort({'ser_id':-1}).limit(1).exec()
@@ -81,6 +79,23 @@ product_schema.post('save', async function(){
     hook_addProductToSector.bind(this)()
     hook_updateVersionForServiceRepo()
 })
+
+
+product_schema.methods.findProductsInSameDepartment = function (wantToRemove){
+    // console.log("gell");
+    // delete this.sp_config.biller_id
+    const arr= wantToRemove.split('.')
+    console.log(arr);
+    let copyData = this
+    delete copyData[arr[0]][arr[1]]
+    return copyData
+    // this. = copyData
+    // delete this['data_fields']['mobile']
+    // delete this['data_fields']['bills_count']
+    return this
+    // delete this.sp_config.biller_id
+}
+
 
 
 const fins = mongoose.model('fins', product_schema);
