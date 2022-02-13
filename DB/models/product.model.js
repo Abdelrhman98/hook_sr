@@ -1,6 +1,7 @@
 const mongoose = require('mongoose'); 
 const { hook_addProductToSector } = require('./hooks/sector.hooks')
 const { hook_updateVersionForServiceRepo } = require('./hooks/version.hooks')
+const { deletePropertyPath } = require('../../helpers/objArray.help')
 // Declare the Schema of the Mongo model
 var product_schema = new mongoose.Schema({
     ser_id:{
@@ -53,6 +54,20 @@ var product_schema = new mongoose.Schema({
         type:String,
         default:""
         //required:true
+    },
+    successRecipt:{
+        type: Number
+    },
+    transaction_type:{
+        type: Number
+    },
+    notAvailable:{
+        type:Boolean
+    },
+    failureReceipt:{
+        type:Object
+    },store:{
+        type:Boolean
     }
 });
 
@@ -82,6 +97,18 @@ product_schema.post('save', async function(){
     hook_updateVersionForServiceRepo()
 })
 
+product_schema.methods.removeKeys = function (wantToRemove){
+    wantToRemove.forEach(key=>{
+        deletePropertyPath(this, key)    
+    })
+    
+    return this
+    // const arr= wantToRemove.split('.')
+    // console.log(arr);
+    // let copyData = this
+    // delete copyData[arr[0]][arr[1]]
+    // return copyData
+}
 
 const fins = mongoose.model('fins', product_schema);
 

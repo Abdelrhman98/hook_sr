@@ -24,8 +24,47 @@ function createObjectFromArrayAndSetValue(array, value=1){
     })
     return obj
 }
+
+
+function deletePropertyPath (obj, path) {
+    if (!obj || !path) 
+        return;
+
+    if (typeof path === 'string') 
+        path = path.split('.');
+
+    for (var i = 0; i < path.length - 1; i++) {
+        obj = obj[path[i]];
+        if (typeof obj === 'undefined') 
+            return;
+    }
+    delete obj[path.pop()];
+};
+
+
+function generalizeObjectByKey(baseObject, object){
+    let baseKeys = Object.keys(baseObject)
+    let objectKyes = Object.keys(object)
+    const key = object[objectKyes[0]],
+    notKey = (object[objectKyes[0]])?0:1
+    let keysNotInObje = baseKeys.filter(ele => {
+        if(!object[ele])return ele
+    })
+    keysNotInObje.forEach(ele=>{
+        baseObject[ele] = notKey
+    })
+    objectKyes.forEach(ele=>{
+        if(typeof object[ele] !='object' && typeof object[ele] !='array')
+            baseObject[ele] = key
+    })
+    baseObject
+    return baseObject
+}
+
 module.exports = {
     createObjectKeyAndValue,
     createErrorArrayUsingKey,
-    createObjectFromArrayAndSetValue
+    createObjectFromArrayAndSetValue,
+    generalizeObjectByKey,
+    deletePropertyPath
 }

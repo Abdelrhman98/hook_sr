@@ -22,6 +22,14 @@ function getProductsWithIds(ids=[])
     ]).exec()
 }
 
+async function getProductsByIdsWithSchema(ids=[], schema){
+    return await productModel.aggregate([
+        { $match:   {ser_id:{$in:ids }  }},
+        { $project: schema }
+    ]).exec()
+}
+
+
 function getAllProductsForServiceRepo(){
     return productModel.find({},
         {
@@ -67,7 +75,8 @@ module.exports = {
     getLastServiceId,
     addNewProductToServiceRepo,
     getServiceById,
-    updateProductById
+    updateProductById,
+    getProductsByIdsWithSchema
 }
 
 

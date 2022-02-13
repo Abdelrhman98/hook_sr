@@ -6,8 +6,20 @@ Content-Type: application/json
 {
     "schemeFor":"aggregator",
     "scheme": ["ar_name","ser_id","description","en_name", "amount","service_charge","requests","main_biller"],
+    "schemeType":"with_scheme",
+    "sub_keys":[""]
+}
+
+###
+POST {{host}}/scheme/add_scheme
+Content-Type: application/json
+
+{
+    "schemeFor":"general",
+    "scheme": ["ser_id","provider_id","description","ar_name", "en_name","description","sp_config","amount","service_charge","requests","main_biller","receipt","sector"],
     "schemeType":"with_scheme"
 }
+
 
 
 ###

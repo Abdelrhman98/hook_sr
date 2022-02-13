@@ -17,6 +17,9 @@ var productScheme = new mongoose.Schema({
         type:String,
         enum: ['with_scheme', 'without_scheme'],
         default:"with_scheme"// withoutScheme
+    },sub_keys:{
+        type:Array,
+        default:[]
     }
 });
 
