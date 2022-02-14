@@ -4,10 +4,10 @@ POST {{host}}/scheme/add_scheme
 Content-Type: application/json
 
 {
-    "schemeFor":"aggregator",
-    "scheme": ["ar_name","ser_id","description","en_name", "amount","service_charge","requests","main_biller"],
+    "schemeFor":"aggregator2",
+    "scheme": ["ser_id","ar_name","en_name","amount","service_charge","requests"],
     "schemeType":"with_scheme",
-    "sub_keys":[""]
+    "sub_keys":["amount.credit", "amount.scale","amount.calculate_fee"]
 }
 
 ###

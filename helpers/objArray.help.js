@@ -41,6 +41,17 @@ function deletePropertyPath (obj, path) {
     delete obj[path.pop()];
 };
 
+function deletePropertyPaths(obj, paths){
+    paths.forEach(path=>{
+        deletePropertyPath(obj, path)
+    })
+}
+
+function cleanObjectsByPaths(objs, paths){
+    objs.forEach(obj=>{
+        deletePropertyPaths(obj, paths)
+    })
+}
 
 function generalizeObjectByKey(baseObject, object){
     let baseKeys = Object.keys(baseObject)
@@ -66,5 +77,7 @@ module.exports = {
     createErrorArrayUsingKey,
     createObjectFromArrayAndSetValue,
     generalizeObjectByKey,
-    deletePropertyPath
+    deletePropertyPath,
+    deletePropertyPaths,
+    cleanObjectsByPaths
 }

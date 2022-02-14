@@ -11,3 +11,13 @@ Content-Type: application/json
 {
     "services":[1,2,3]
 }
+
+
+###Get service List ###
+POST {{aggregatorURL}}/serviceList2
+Content-Type: application/json
+
+{
+ 
+    "services":[1,2,3]
+}

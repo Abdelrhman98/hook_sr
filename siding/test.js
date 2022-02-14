@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-
+const axios =require('axios')
 mongoose.Promise = global.Promise;
+
+const {writeJson} = require('../helpers/files/file')
 const productModel = require('../DB/models/product.model')
 // Connect MongoDB at default port 27017.
 mongoose.connect('mongodb://localhost:27017/serviceRepo', {
@@ -21,5 +23,19 @@ var getTest = async()=>{
     // console.log(test.findProductsInSameDepartment());
 }
 
-getTest()
+
+var getWE= async()=>{
+    const test = await productModel.find({main_biller:{ $in: [/ويي/, /تصالات/] }}).select('-_id ser_id').exec();
+    var red = []
+    test.forEach((ele)=>{
+        red.push( ele.ser_id)
+    })
+    axios.post('http://localhost:3000/aggregator/serviceList',{"services":red}).then(data=>{
+        writeJson('./aggregatorServiceList.json', data.data.serviceList)
+        
+    })
+    
+    // console.log(red)
+}
+getWE()
 
