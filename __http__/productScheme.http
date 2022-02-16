@@ -1,10 +1,37 @@
 @host =  http://localhost:3000
-
+@schema = {
+    "_id": {
+        "$oid": "62023712a3a1bfa4ce013793"
+    },
+    "schemeFor": "general",
+    "scheme": {
+        "ser_id": 1,
+        "provider_id": 1,
+        "description": 1,
+        "ar_name": 1,
+        "en_name": 1,
+        "sp_config": 1,
+        "amount": 1,
+        "service_charge": 1,
+        "requests": 1,
+        "main_biller": 1,
+        "receipt": 1,
+        "sector": 1,
+        "isWorking":1,
+        "store":1,
+        "failureReceipt":1,
+        "notAvailable":1,
+        "transaction_type":1,
+        "successRecipt":1
+    },
+    "schemeType": "with_scheme",
+    "__v": 0
+}
 POST {{host}}/scheme/add_scheme
 Content-Type: application/json
 
 {
-    "schemeFor":"aggregator2",
+    "schemeFor":"aggregator3",
     "scheme": ["ser_id","ar_name","en_name","amount","service_charge","requests"],
     "schemeType":"with_scheme",
     "sub_keys":["amount.credit", "amount.scale","amount.calculate_fee"]
@@ -34,4 +61,15 @@ Content-Type: application/json
     "status" : "1",
     "main_biller_id" : "14",
     "service_provider_id" : "2"
+}
+
+
+###
+POST {{host}}/scheme/add_scheme
+Content-Type: application/json
+
+{
+    "schemeFor":"monitor",
+    "scheme": ["ser_id","ar_name","en_name","provider_id","main_biller", "sector"],
+    "schemeType":"with_scheme"
 }

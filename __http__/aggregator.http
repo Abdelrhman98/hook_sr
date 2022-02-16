@@ -18,6 +18,6 @@ POST {{aggregatorURL}}/serviceList2
 Content-Type: application/json
 
 {
- 
+    "scheme":"aggregator",
     "services":[1,2,3]
 }

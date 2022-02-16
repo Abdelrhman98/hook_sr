@@ -69,6 +69,8 @@ var product_schema = new mongoose.Schema({
     },store:{
         type:Boolean
     }
+},{
+    strict: false
 });
 
 

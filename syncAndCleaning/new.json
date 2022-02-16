@@ -1,0 +1,1346 @@
+[
+    {
+        "ser_id": 807,
+        "provider_id": 1,
+        "ar_name": "طابعة رقم تاميني",
+        "en_name": "print INSURANCE NUMBER",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77775,
+            "service_type": "PEN"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومى",
+                "en_label": "National NUMBER",
+                "field_name": "bill_id",
+                "max_len": "40",
+                "min_len": "1",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات العميل",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "خدمات حكوميه",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "خدمات حكومية"
+    },
+    {
+        "ser_id": 847,
+        "provider_id": 1,
+        "ar_name": "مدفوعة تأمينات المقاولات",
+        "en_name": "INSURANCE NUMBER Construction",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77752,
+            "service_type": "NST"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "رقم المنشاه التاميني",
+                "en_label": "COPERATE INSURANCE NUMBER",
+                "field_name": "bill_id",
+                "max_len": "40",
+                "min_len": "1",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات المنشاه",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "خدمات حكوميه",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "خدمات حكومية"
+    },
+    {
+        "ser_id": 808,
+        "provider_id": 1,
+        "ar_name": "تامينات منشات",
+        "en_name": "Cairo University",
+        "description": "",
+        "sp_config": {
+            "biller_id": 55554,
+            "service_type": "PEN"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "رقم المنشاه التاميني",
+                "en_label": "COPERATE INSURANCE NUMBER",
+                "field_name": "bill_id",
+                "max_len": "40",
+                "min_len": "1",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات الطالب",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "وزارة التربية والتعليم",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "التعليم"
+    },
+    {
+        "ser_id": 810,
+        "provider_id": 22,
+        "ar_name": "جمعية المستقبل الخيرية باولاد عمرو",
+        "en_name": "Abo amr",
+        "description": "",
+        "sp_config": {
+            "provider_code": 6,
+            "payment_method_id": 0
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي",
+                "en_label": "NATIONAL ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "info_text": {
+                "ar_label": "بيانات العميل",
+                "en_label": "Customer Info",
+                "field_name": "info_text",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "calculate_fee": false,
+            "valueType": "range",
+            "range_min": 1,
+            "range_max": 10000000,
+            "is_user_entered": false,
+            "credit": false
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "bills_store_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "bill_id",
+                    "amount",
+                    "service_charge",
+                    "info_text"
+                ]
+            },
+            {
+                "name": "bills_store_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id",
+                    "amount",
+                    "service_charge"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "جمعية المستقبل الخيرية باولاد عمرو",
+        "receipt": {
+            "template_id": 47,
+            "optional": false,
+            "map": {
+                "info_text": "customer_info"
+            }
+        },
+        "sector": "الاعمال الخيرية"
+    },
+    {
+        "ser_id": 811,
+        "provider_id": 22,
+        "ar_name": "تنمية ببئرعنبر",
+        "en_name": "Community Development Association in Bir Amber",
+        "description": "",
+        "sp_config": {
+            "provider_code": 7,
+            "payment_method_id": 0
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي",
+                "en_label": "CUSTOMER ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "info_text": {
+                "ar_label": "بيانات العميل",
+                "en_label": "Customer Info",
+                "field_name": "info_text",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "calculate_fee": false,
+            "valueType": "range",
+            "range_min": 1,
+            "range_max": 10000000,
+            "is_user_entered": false,
+            "credit": false
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "bills_store_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "bill_id",
+                    "amount",
+                    "service_charge",
+                    "info_text"
+                ]
+            },
+            {
+                "name": "bills_store_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id",
+                    "amount",
+                    "service_charge"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "جمعية تنمية المجتمع ببئرعنبر",
+        "receipt": {
+            "template_id": 47,
+            "optional": false,
+            "map": {
+                "info_text": "customer_info"
+            }
+        },
+        "sector": "الاعمال الخيرية"
+    },
+    {
+        "ser_id": 837,
+        "provider_id": 1,
+        "ar_name": "منصة جامعة طنطا",
+        "en_name": "Tanta university website",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77760,
+            "service_type": "PGW"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "كود السداد",
+                "en_label": "Bill ID",
+                "field_name": "bill_id",
+                "max_len": "17",
+                "min_len": "1",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات العميل",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": " منصة جامعة طنطا",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "التعليم"
+    },
+    {
+        "ser_id": 842,
+        "provider_id": 1,
+        "ar_name": "رسوم استنفاذ مرات الغياب للمرة الأولى",
+        "en_name": "Exhaustion fee for absences for the first time",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77801,
+            "service_type": "MOE"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي للطالب",
+                "en_label": "Bill ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات الطالب",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "وزارة التربية والتعليم",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "التعليم"
+    },
+    {
+        "ser_id": 843,
+        "provider_id": 1,
+        "ar_name": "رسوم استنفاذ مرات الغياب للمرة الثانية",
+        "en_name": "Exhaustion fee for absences for the second time",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77802,
+            "service_type": "MOE"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي للطالب",
+                "en_label": "Bill ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات الطالب",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "وزارة التربية والتعليم",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "التعليم"
+    },
+    {
+        "ser_id": 844,
+        "provider_id": 1,
+        "ar_name": "رسوم استنفاذ مرات الرسوب",
+        "en_name": "Exhaustion fee for failure times",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77800,
+            "service_type": "MOE"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي للطالب",
+                "en_label": "Bill ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات الطالب",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "وزارة التربية والتعليم",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "التعليم"
+    },
+    {
+        "ser_id": 845,
+        "provider_id": 1,
+        "ar_name": "رسوم التقدم للإمتحانات العامة",
+        "en_name": "General Examination Fees",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77799,
+            "service_type": "MOE"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي للطالب",
+                "en_label": "Bill ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات الطالب",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "وزارة التربية والتعليم",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "التعليم"
+    },
+    {
+        "ser_id": 846,
+        "provider_id": 1,
+        "ar_name": "رسوم اداء امتحان نقل من الخارج",
+        "en_name": "Transfer exam fees from abroad",
+        "description": "",
+        "sp_config": {
+            "biller_id": 77804,
+            "service_type": "MOE"
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي للطالب",
+                "en_label": "Bill ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "month": {
+                "ar_label": "الشهر",
+                "en_label": "Month",
+                "field_name": "month",
+                "input_type": "S"
+            },
+            "customer_info": {
+                "ar_label": "بيانات الطالب",
+                "en_label": "Customer Info",
+                "field_name": "customer_info",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 500,
+            "is_user_entered": false,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "Efinance_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "month",
+                    "customer_info",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "Efinance_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "وزارة التربية والتعليم",
+        "receipt": {
+            "template_id": 3,
+            "optional": false
+        },
+        "sector": "التعليم"
+    },
+    {
+        "ser_id": 860,
+        "provider_id": 22,
+        "ar_name": "جمعية الخدمات الاجتماعية بجزيرة مطيرة بقوص قنا",
+        "en_name": "",
+        "description": "",
+        "sp_config": {
+            "provider_code": 9,
+            "payment_method_id": 0
+        },
+        "data_fields": {
+            "bill_id": {
+                "ar_label": "الرقم القومي",
+                "en_label": "NATIONAL ID",
+                "field_name": "bill_id",
+                "max_len": "14",
+                "min_len": "14",
+                "visible": true,
+                "default_val": "",
+                "is_password": false,
+                "required": true,
+                "input_type": "N"
+            },
+            "info_text": {
+                "ar_label": "بيانات العميل",
+                "en_label": "Customer Info",
+                "field_name": "info_text",
+                "input_type": "S"
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "calculate_fee": false,
+            "valueType": "range",
+            "range_min": 1,
+            "range_max": 10000000,
+            "is_user_entered": false,
+            "credit": false
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "SP"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "bills_store_inq",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "bill_id"
+                ],
+                "outputs": [
+                    "bill_id",
+                    "amount",
+                    "service_charge",
+                    "info_text"
+                ]
+            },
+            {
+                "name": "bills_store_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "bill_id",
+                    "amount",
+                    "service_charge"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "جمعية الخدمات الاجتماعية بجزيرة مطيرة بقوص قنا",
+        "receipt": {
+            "template_id": 47,
+            "optional": false,
+            "map": {
+                "info_text": "customer_info"
+            }
+        },
+        "sector": "الاعمال الخيرية"
+    },
+    {
+        "ser_id": 871,
+        "provider_id": 12,
+        "ar_name": "تجديد باقات اورنج",
+        "en_name": "orange Recharge",
+        "description": "",
+        "sp_config": {
+            "TYPE": "EXRCTRFREQ",
+            "CAT": "CONTROL",
+            "SERVICETYPE": "RC"
+        },
+        "data_fields": {
+            "customer_number": {
+                "ar_label": "رقم العميل",
+                "en_label": "Phone",
+                "field_name": "customer_number",
+                "max_len": 11,
+                "min_len": 11,
+                "visible": true,
+                "default_val": "012",
+                "required": true,
+                "input_type": "N",
+                "is_password": false,
+                "confirmed": false
+            }
+        },
+        "amount": {
+            "ar_label": "لتجديد باقة نظامك الشهري اشحن ب",
+            "en_label": "Choose one of these values",
+            "field_name": "amount",
+            "calculate_fee": false,
+            "valueType": "range",
+            "range_min": 5,
+            "range_max": 10000,
+            "is_user_entered": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "scValueType": "P",
+                    "fromValue": 0,
+                    "toValue": 1000000000,
+                    "scValue": 0
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "orange_inquire",
+                "order": 1,
+                "request_type": "I",
+                "inputs": [
+                    "customer_number"
+                ],
+                "outputs": [
+                    "customer_number",
+                    "amount",
+                    "service_charge"
+                ]
+            },
+            {
+                "name": "orange_pay",
+                "order": 2,
+                "request_type": "P",
+                "inputs": [
+                    "customer_number",
+                    "amount",
+                    "service_charge"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "اورانج",
+        "receipt": {
+            "template_id": 56,
+            "optional": false,
+            "extraKeys": {
+                "charge_notes": "لقد قمت بتجديد باقة نظامك الشهري  بنجاح",
+                "dynamic_note": "لقد قمت بتجديد باقة $ نظامك الشهري بنجاح"
+            }
+        },
+        "sector": "الاتصالات"
+    },
+    {
+        "ser_id": 861,
+        "provider_id": 5,
+        "ar_name": "صدقة عامة لمؤسسة مرسال ",
+        "en_name": null,
+        "description": "مؤسسة مرسال",
+        "sp_config": {},
+        "data_fields": {
+            "mobile": {
+                "ar_label": "رقم هاتف المتبرع",
+                "en_label": "Donor’s Mobile Number",
+                "field_name": "mobile",
+                "max_len": 11,
+                "min_len": 11,
+                "visible": true,
+                "required": true,
+                "input_type": "N",
+                "is_password": false,
+                "confirmed": true
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 10,
+            "range_max": 10000,
+            "is_user_entered": true,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "fromValue": 0,
+                    "toValue": 1000,
+                    "scValue": 0,
+                    "scValueType": "P"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "damen_pay",
+                "order": 1,
+                "request_type": "P",
+                "inputs": [
+                    "amount",
+                    "mobile"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "مرسال",
+        "receipt": {
+            "template_id": 1,
+            "optional": false
+        },
+        "sector": "الاعمال الخيرية"
+    },
+    {
+        "ser_id": 862,
+        "provider_id": 5,
+        "ar_name": "صدقة جارية لمستشفى مرسال",
+        "en_name": null,
+        "description": "مؤسسة مرسال",
+        "sp_config": {},
+        "data_fields": {
+            "mobile": {
+                "ar_label": "رقم هاتف المتبرع",
+                "en_label": "Donor’s Mobile Number",
+                "field_name": "mobile",
+                "max_len": 11,
+                "min_len": 11,
+                "visible": true,
+                "required": true,
+                "input_type": "N",
+                "is_password": false,
+                "confirmed": true
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 10,
+            "range_max": 10000,
+            "is_user_entered": true,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "fromValue": 0,
+                    "toValue": 1000,
+                    "scValue": 0,
+                    "scValueType": "P"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "damen_pay",
+                "order": 1,
+                "request_type": "P",
+                "inputs": [
+                    "amount",
+                    "mobile"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "مرسال",
+        "receipt": {
+            "template_id": 1,
+            "optional": false
+        },
+        "sector": "الاعمال الخيرية"
+    },
+    {
+        "ser_id": 863,
+        "provider_id": 5,
+        "ar_name": "زكاة مال",
+        "en_name": null,
+        "description": "مؤسسة مرسال",
+        "sp_config": {},
+        "data_fields": {
+            "mobile": {
+                "ar_label": "رقم هاتف المتبرع",
+                "en_label": "Donor’s Mobile Number",
+                "field_name": "mobile",
+                "max_len": 11,
+                "min_len": 11,
+                "visible": true,
+                "required": true,
+                "input_type": "N",
+                "is_password": false,
+                "confirmed": true
+            }
+        },
+        "amount": {
+            "ar_label": "القيمة",
+            "en_label": "amount",
+            "field_name": "amount",
+            "valueType": "range",
+            "range_min": 10,
+            "range_max": 10000,
+            "is_user_entered": true,
+            "calculate_fee": false,
+            "credit": true
+        },
+        "service_charge": {
+            "ar_label": "تكلفة الخدمة",
+            "en_label": "service charge",
+            "field_name": "service_charge",
+            "slides": [
+                {
+                    "fromValue": 0,
+                    "toValue": 1000,
+                    "scValue": 0,
+                    "scValueType": "P"
+                }
+            ]
+        },
+        "requests": [
+            {
+                "name": "damen_pay",
+                "order": 1,
+                "request_type": "P",
+                "inputs": [
+                    "amount",
+                    "mobile"
+                ],
+                "outputs": []
+            }
+        ],
+        "main_biller": "مرسال",
+        "receipt": {
+            "template_id": 1,
+            "optional": false
+        },
+        "sector": "الاعمال الخيرية"
+    }
+]

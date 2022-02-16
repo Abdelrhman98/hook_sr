@@ -13,7 +13,7 @@ async function getGeneralScheme(){
 
 async function getFetcherScheme( fetcher_name , schemaHandler = false){
     var fetcherScheme = await productSchemeModel.findOne({schemeFor : fetcher_name }).exec()
-    var fetcherFinalFilter ;
+    var fetcherFinalFilter;
     if(schemaHandler){
         const generalScheme = await getGeneralScheme()
         fetcherFinalFilter = generalizeObjectByKey( generalScheme, fetcherScheme.scheme )

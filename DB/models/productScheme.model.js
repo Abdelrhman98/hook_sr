@@ -1,5 +1,11 @@
 const mongoose = require('mongoose'); // Erase if already required
 
+// var joinsSchema = new mongoose.Schema({
+//     collection:{
+//         Type:String,
+//         required:true
+//     }
+// })
 // Declare the Schema of the Mongo model
 var productScheme = new mongoose.Schema({
     schemeFor:{
@@ -21,6 +27,9 @@ var productScheme = new mongoose.Schema({
         type:Array,
         default:[]
     }
+    // ,joins:{
+    //     type:joinsSchema
+    // }
 });
 
 //Export the model

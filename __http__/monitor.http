@@ -1,0 +1,8 @@
+@host =  http://localhost:3000/monitor
+###
+POST {{host}}/allServices
+Content-Type: application/json
+
+{
+    "scheme":"monitor"
+}

@@ -37,16 +37,14 @@ router.post("/serviceList2", schemeMiddleware, async(req, res, next)=>{
   const version = await inst.getVersion()
 
   services.forEach(element => { parsedServices.push(parseInt(element)) });
-
-  getProductsByIdsWithSchema(parsedServices , req.body.fetcherFilter.filter).then( products => {
-    req.body.fetcherFilter.sub_keys
-    cleanObjectsByPaths(products, req.body.fetcherFilter.sub_keys)
-    console.log(products)
-    // console.log(req.body.fetcherFilter.sub_keys)
-    keyValueProducts = createObjectKeyAndValue(products, "ser_id")
-    res.send({"version": version,"availableServices":parsedServices,"serviceList":keyValueProducts});
-  }) 
-
+    getProductsByIdsWithSchema(parsedServices , req.body.fetcherFilter.filter).then( products => {
+      req.body.fetcherFilter.sub_keys
+      cleanObjectsByPaths(products, req.body.fetcherFilter.sub_keys)
+      console.log(products)
+      // console.log(req.body.fetcherFilter.sub_keys)
+      keyValueProducts = createObjectKeyAndValue(products, "ser_id")
+      res.send({"version": "v1.0","availableServices":parsedServices,"serviceList":keyValueProducts});
+    }) 
 })
 
 router.get("/test",(req, res)=>{

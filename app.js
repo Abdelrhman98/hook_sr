@@ -9,6 +9,7 @@ require('dotenv').config()
 
 //? MongoConnect
 const MongoConnection = require('./connections/mongoClient')
+const schemeMiddleware = require('./middlewares/scheme.middleware')
 
 //? configrations
 const PORT = 3000||process.env.PORT
@@ -17,6 +18,7 @@ const PORT = 3000||process.env.PORT
 var serviceRepoRouter = require('./routes/serviceRepo.endpoints');
 var aggregatorRouter = require('./routes/aggregator.endpoints');
 var productSchemeRouter = require('./routes/productScheme.endpoints')
+var monitoringRouter = require('./routes/montoring.endpoints')
 var app = express();
 
 
@@ -41,10 +43,12 @@ app.post('/asd',async (req, res, next)=>{
 
   
 })
+app.use(schemeMiddleware)
 //?routing 
-app.use('/',            serviceRepoRouter);
-app.use('/aggregator' , aggregatorRouter  );
+app.use('/',            serviceRepoRouter  );
+app.use('/aggregator' , aggregatorRouter   );
 app.use('/scheme',      productSchemeRouter)
+app.use('/monitor'    , monitoringRouter   )
 
 //?error handling
 // catch 404 and forward to error handler
