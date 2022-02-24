@@ -5,7 +5,7 @@ const {
 } = require('../../DB/dataExtractors/version.exec')
 const {
     getAllProductsForServiceRepo
-} = require('../../DB/dataExtractors/products.exec')
+} = require('../../DB/dataExtractors/services.exec')
 
 const fse = require('fs-extra')
 const { 

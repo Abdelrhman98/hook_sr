@@ -73,3 +73,13 @@ Content-Type: application/json
     "scheme": ["ser_id","ar_name","en_name","provider_id","main_biller", "sector"],
     "schemeType":"with_scheme"
 }
+
+###
+POST {{host}}/scheme/add_scheme
+Content-Type: application/json
+
+{
+    "schemeFor":"test",
+    "scheme": ["sector","ar_name"],
+    "schemeType":"with_scheme"
+}

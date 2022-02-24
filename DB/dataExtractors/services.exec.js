@@ -45,7 +45,7 @@ async function getProductsByIdsWithSchema(ids=[], schema){
 }
 
 
-function getAllProductsForServiceRepo(){
+function getAllProductsForServiceRepo(filter={}, scheme={}){
     return serviceId.find({}).exec()
 }
 

@@ -12,18 +12,20 @@ async function getGeneralScheme(){
 }
 
 async function getFetcherScheme( fetcher_name , schemaHandler = false){
-    var fetcherScheme = await productSchemeModel.findOne({schemeFor : fetcher_name }).exec()
-    var fetcherFinalFilter;
+    var fetcherScheme   = await productSchemeModel.findOne({schemeFor : fetcher_name }).exec()
+    const generalScheme = await getGeneralScheme()
+    let targetScheme =  (fetcherScheme?.scheme)?fetcherScheme.scheme:generalScheme
+    var fetcherFinalFilter = {};
     if(schemaHandler){
-        const generalScheme = await getGeneralScheme()
-        fetcherFinalFilter = generalizeObjectByKey( generalScheme, fetcherScheme.scheme )
+        fetcherFinalFilter = generalizeObjectByKey( generalScheme, targetScheme )
         Object.keys(fetcherFinalFilter).forEach(ele=>{
             if(!fetcherFinalFilter[ele])
                 delete fetcherFinalFilter[ele]
         })
+        
     }
     fetcherFinalFilter["_id"]=0
-    return {filter:fetcherFinalFilter , sub_keys:fetcherScheme.sub_keys }
+    return {filter:fetcherFinalFilter , sub_keys:fetcherScheme?.sub_keys }
 }
 
 module.exports = {

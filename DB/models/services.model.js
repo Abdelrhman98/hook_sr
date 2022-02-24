@@ -26,7 +26,6 @@ var service_schema = new mongoose.Schema({
     en_name:{
         type:String,
         default:''
-        //required:true,
     },
     sp_config:{
         type:Object,
@@ -53,7 +52,6 @@ var service_schema = new mongoose.Schema({
     sector:{
         type:String,
         default:""
-        //required:true
     },isNew:{
         type:Number,
         default:0
@@ -74,12 +72,12 @@ async function hook_generateSerIdBasedOnLastService(){
     //return 
 }
 
-// service_schema.pre("save", async function(next){
-//     if(this.isNew){
-//         await hook_generateSerIdBasedOnLastService.bind(this)()
-//     }
-//     next()
-// })
+service_schema.pre("save", async function(next){
+    if(this.isNew){
+        await hook_generateSerIdBasedOnLastService.bind(this)()
+    }
+    next()
+})
 
 service_schema.post('findOneAndUpdate', async function(){
     hook_updateVersionForServiceRepo()
