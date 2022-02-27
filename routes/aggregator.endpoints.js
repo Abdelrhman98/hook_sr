@@ -24,7 +24,6 @@ router.post("/serviceList", async(req, res, next)=>{
   });
   getProductsWithIds(parsedServices).then( products => {
     keyValueProducts = createObjectKeyAndValue(products, "ser_id")
-
     res.send({"version": version,"availableServices":parsedServices,"serviceList":keyValueProducts});
   }) 
 })

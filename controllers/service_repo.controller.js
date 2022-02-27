@@ -1,8 +1,8 @@
 const fs = require('fs')
-const path = require('path')
-
-
 const serviceRepoGenerator = require('../generators/serviceRepo/serviceRepo.gen')
+const { addNewProduct ,getService, updateProduct } = require('../controllers/product.controller')
+
+
 
 async function generateServiceRepo(req, res, next){
     const inst = new serviceRepoGenerator();
@@ -20,7 +20,21 @@ async function getServiceRepoLatestVersion(req, res, next){
     res.send({ version:await inst.getVesion()})
 }
 
+async function updateService(req, res, next){
+    res.send(await updateProduct(req.params.id, req.body))
+}
+
+async function addNewService(req, res, next){
+    res.send(await addNewProduct(req.body))
+}
+
+async function getServiceById (req,res,next){
+    res.send(await getService(req.params.id))
+}
 module.exports = {
     generateServiceRepo,
-    getServiceRepoLatestVersion
+    getServiceRepoLatestVersion,
+    updateService,
+    addNewService,
+    getServiceById
 }
