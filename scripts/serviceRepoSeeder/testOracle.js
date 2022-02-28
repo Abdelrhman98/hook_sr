@@ -1,7 +1,7 @@
 // const oracle = require('./connections/oracleConn')
-const orcaleDB = require('./DB/oracle/oracleDB');
+const orcaleDB = require('../../DB/oracle/oracleDB');
 
-const { newReportingSchema: oracleConfig } = require('./connections/oracleConn');
+const { newReportingSchema: oracleConfig } = require('../../connections/oracleConn');
 execute = async () => {
     const orcaleClient = orcaleDB.getInstance(oracleConfig.connectString, oracleConfig);
 
