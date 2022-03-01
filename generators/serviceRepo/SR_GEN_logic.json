@@ -1,0 +1,8 @@
+{
+    "prod":{
+        "versionFor"        : "service_repo_prod",
+        "generatedFileName" : "serviceRepo_prod",
+        "oldDir"            : "/oldVersions/serviceRepo_prod",
+        "cacheMethodName"   : "cacheAllProd"
+    }
+}
