@@ -1,0 +1,10 @@
+[{
+    "versionFor": "serviceRepo",
+    "version": "12.87"
+},{
+    "versionFor": "service_repo_prod",
+    "version": "5.06"
+},{
+    "versionFor": "serviceRepo_uat",
+    "version": "1.02"
+}]
