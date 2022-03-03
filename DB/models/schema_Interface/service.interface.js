@@ -1,7 +1,6 @@
 module.exports = {
     ser_id:{
         type:Number,
-        unique:true,
         index:true
     },
     provider_id:{

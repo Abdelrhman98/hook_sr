@@ -1,16 +1,12 @@
 const mongoose      = require('mongoose'); 
 const serviceSchema = require('./schema_Interface/service.interface')
 
-var service_preAdd_schema = new mongoose.Schema({
-        ...serviceSchema,
-        version:{
-            type:Number,
-            default:1
-        }
+var service_history_schema = new mongoose.Schema({
+        ...serviceSchema
     },{
     strict: false
 });
 
-const servicePreAdd   = mongoose.model('service_preAdd_model', service_preAdd_schema);
+const serviceHistoryAdd = mongoose.model('service_history_model', service_history_schema);
 
-module.exports  = servicePreAdd
+module.exports  = serviceHistoryAdd

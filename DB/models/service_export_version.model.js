@@ -7,7 +7,7 @@ var versionObject = new mongoose.Schema({
     },
     isWorking:{
         type:Boolean,
-        default:false
+        default:true
     },
     created_at:{
         type: Date,
@@ -24,10 +24,15 @@ var service_export_version = new mongoose.Schema({
         required:true,
         unique:true,
         index:true,
-    },versions:{
-
+    },prod_export:{
+        versionObject
+    },
+    uat_export:{
+        versionObject
+    },dev_export:{
+        versionObject
     }
 });
 
 //Export the model
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('service_export_version', service_export_version);

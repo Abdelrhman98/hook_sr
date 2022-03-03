@@ -5,11 +5,7 @@ const serviceSchema = require('./schema_Interface/service.interface')
     
 */
 var service_preAdd_schema = new mongoose.Schema({
-        serviceSchema,
-        version:{
-            type:Number,
-            default:1
-        }
+        ...serviceSchema
     },{
     strict: false
 });
