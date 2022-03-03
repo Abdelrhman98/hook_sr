@@ -8,7 +8,7 @@ try{
     if(err)
         console.log(err)
 }
-let inter = new serviceRepo()
+let inter = new serviceRepo("uat")
 var main = async()=>{
     console.log(await inter.generator_logic())
 }

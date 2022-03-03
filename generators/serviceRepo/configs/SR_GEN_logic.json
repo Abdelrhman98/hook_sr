@@ -4,5 +4,11 @@
         "generatedFileName" : "serviceRepo_prod",
         "oldDir"            : "/oldVersions/serviceRepo_prod",
         "cacheMethodName"   : "cacheAllProd"
+    },
+    "uat":{
+        "versionFor"        : "serviceRepo_uat",
+        "generatedFileName" : "serviceRepo_uat",
+        "oldDir"            : "/oldVersions/serviceRepo_uat",
+        "cacheMethodName"   : "cacheAll_uat"
     }
 }

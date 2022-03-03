@@ -83,9 +83,10 @@ async function hook_generateSerIdBasedOnLastService(){
 }
 
 product_schema.pre("save", async function(next){
-    if(this.isNew){
-        await hook_generateSerIdBasedOnLastService.bind(this)()
-    }
+    await hook_generateSerIdBasedOnLastService.bind(this)()
+    // if(this.isNew){
+        
+    // }
     next()
 })
 
