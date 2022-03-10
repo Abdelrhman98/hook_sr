@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "ENV=local nodemon app.js",
-    "test-betaGen": "jest test/betaCalc.test.js"
+    "test-betaGen": "jest test/betaCalc/betaCalc.test.js"
   },
   "dependencies": {
     "@sequelize/core": "^7.0.0-alpha.10",

@@ -1,21 +1,8 @@
 const mongoose = require('mongoose');
+const serviceVersionInterface = require('./schema_Interface/serviceVersion.interface')
 
 var versionObject = new mongoose.Schema({
-    released_version:{
-        type:String,
-        default:"1.0"
-    },
-    isWorking:{
-        type:Boolean,
-        default:true
-    },
-    created_at:{
-        type: Date,
-        default:Date.now()
-    },
-    updated_at:{
-        type:Date
-    }
+    ...serviceVersionInterface
 });
 
 var service_export_version = new mongoose.Schema({
@@ -24,7 +11,8 @@ var service_export_version = new mongoose.Schema({
         required:true,
         unique:true,
         index:true,
-    },prod_export:{
+    },
+    prod_export:{
         versionObject
     },
     uat_export:{
