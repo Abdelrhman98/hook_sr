@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const seedServices = require('./seedingTasks/seedServices/index')
 const seedVersion = require('./seedingTasks/seedingVersions/index')
+const exportServices = require('./export/services/index')
 require('dotenv').config()
 const { series } = require('gulp');
 
@@ -19,5 +20,5 @@ function test(){
 }
 exports.seedServices = seedServices
 exports.seedVersions = seedVersion
-
+exports.exportServices = exportServices
 exports.default = test
