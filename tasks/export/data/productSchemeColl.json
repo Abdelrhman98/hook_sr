@@ -1,0 +1,84 @@
+[
+    {
+        "sub_keys": [],
+        "_id": "62023712a3a1bfa4ce013793",
+        "schemeFor": "general",
+        "scheme": {
+            "ser_id": 1,
+            "provider_id": 1,
+            "description": 1,
+            "ar_name": 1,
+            "en_name": 1,
+            "sp_config": 1,
+            "amount": 1,
+            "service_charge": 1,
+            "requests": 1,
+            "main_biller": 1,
+            "receipt": 1,
+            "sector": 1,
+            "isWorking": 1,
+            "store": 1,
+            "failureReceipt": 1,
+            "notAvailable": 1,
+            "transaction_type": 1,
+            "successRecipt": 1
+        },
+        "schemeType": "with_scheme",
+        "__v": 0
+    },
+    {
+        "_id": "62090219729a993b0d90a3fc",
+        "schemeFor": "aggregator",
+        "scheme": {
+            "ser_id": 1,
+            "ar_name": 1,
+            "en_name": 1,
+            "amount": 1,
+            "service_charge": 1,
+            "requests": 1
+        },
+        "schemeType": "with_scheme",
+        "sub_keys": [
+            "amount.credit",
+            "amount.scale"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "620cc01f1f6ada694c13005b",
+        "schemeFor": "monitor",
+        "scheme": {
+            "ser_id": 1,
+            "ar_name": 1,
+            "en_name": 1,
+            "provider_id": 1,
+            "main_biller": 1,
+            "sector": 1
+        },
+        "schemeType": "with_scheme",
+        "sub_keys": [],
+        "__v": 0
+    },
+    {
+        "_id": "6217511360c46978d5621cd9",
+        "schemeFor": "billpayment",
+        "scheme": {
+            "sector": 0,
+            "isWorking": 0
+        },
+        "schemeType": "without_scheme",
+        "sub_keys": [],
+        "__v": 0
+    },
+    {
+        "_id": "6217737b9a0196dcb27524de",
+        "schemeFor": "test",
+        "scheme": {
+            "sector": 1,
+            "ar_name": 1
+        },
+        "schemeType": "with_scheme",
+        "sub_keys": [],
+        "__v": 0
+    }
+]
