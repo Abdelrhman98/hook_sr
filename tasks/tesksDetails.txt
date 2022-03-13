@@ -1,0 +1,10 @@
+_export
+    _services
+        _index
+            =>exporting service collection into json
+
+seedingTasks
+    seedingVersions
+        index seeding versioning collection
+    seedServices
+        index seeding services in latest export
