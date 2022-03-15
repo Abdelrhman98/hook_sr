@@ -9,7 +9,7 @@ POST {{aggregatorURL}}/serviceList
 Content-Type: application/json
 
 {
-    "schemeName":"test",
+    "schemeName":"aggregator",
     "services":[1,2,3]
 }
 

@@ -26,23 +26,6 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-
-
-
-app.post('/asd',async (req, res, next)=>{
-
-  // await getLastServiceId().then(doc=>{
-  //   console.log(doc[0].ser_id);
-  // })
-  // var x= product(req.body)
-  // x.save((err, doc)=>{
-  //   if(err)
-  //   console.log(err)
-  //   //console.log(doc);
-  // })
-
-  
-})
 app.use(schemeMiddleware)
 //?routing 
 app.use('/',            serviceRepoRouter  );
@@ -55,8 +38,6 @@ app.use('/monitor'    , monitoringRouter   )
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
-
 
 //? run app
 app.listen(PORT,()=>{

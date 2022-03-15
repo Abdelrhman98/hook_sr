@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const { MongoUri } = require('./DBCredentials/mongoConnection')
-
+const fs = require('fs')
 const modelsPath = require("path").join(__dirname, "./models");
 
 class MongoConnection {
@@ -13,15 +13,16 @@ class MongoConnection {
         if (!this.client) {
             if (uri) this.uri = uri;
             try {
-                this.client = await mongoose.connect(this.uri, {
-                    useNewUrlParser: true,
-                    useFindAndModify: false,
-                    useUnifiedTopology: true,
-                    useCreateIndex: true
-                })
+                this.client = await mongoose.connect(this.uri)
                 console.log(`Connected to Mongo Cluster successfully`)
-                // Load all models when initializing db
-                require("fs").readdirSync(modelsPath).forEach((file) => require("./models/" + file));
+                fs.readdirSync(modelsPath).forEach((file) => {
+                    fs.lstat(modelsPath+"\\"+file,(err, stats)=>{
+                        if(err)
+                            return console.log(err)
+                        if(stats.isFile())
+                            require("./models/" + file)
+                    })
+                });
                 console.log(`Models loaded successfully`)
             } catch (error) {
                 console.error(`Connection to Mongo Cluster failed: ${error} \n Reconnecting...`);

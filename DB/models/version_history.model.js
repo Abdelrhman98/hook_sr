@@ -22,5 +22,5 @@ var versionHistory = new mongoose.Schema({
 },{strict:false});
 
 
-const versionHistory = mongoose.model('version_Histroy', versionHistory);
-module.exports = versionHistory
+const versionHistoryModel = mongoose.model('version_Histroy', versionHistory);
+module.exports = versionHistoryModel
