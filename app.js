@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var http = require('http');
 
-const {getLastServiceId} =  require('./DB/dataExtractors/products.exec')
+
 
 require('dotenv').config()
 
@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 
 
 
-const product = require('./DB/models/product.model')
+
 app.post('/asd',async (req, res, next)=>{
 
   // await getLastServiceId().then(doc=>{
