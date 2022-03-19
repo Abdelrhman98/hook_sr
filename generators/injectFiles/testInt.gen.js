@@ -1,28 +1,26 @@
 const generator = require('../interface/generator')
+const {
+    getAllProductsForServiceRepo
+} = require('../../DB/dataExtractors/services.exec')
 
-const ser_gen_logic = require('./configs/SR_GEN_logic.json')
-const cacheLogic = require('./configs/cacheMethod.logic')
-var export_ENV = "prod"
+
 class serviceRepoGenerator extends generator{
 
-    constructor(env = "prod"){
-        export_ENV = env
-        var generatorEnv = ser_gen_logic[env]
+    constructor(){
         super({
-            versionFor: generatorEnv["versionFor"],
-            generatedFileName: generatorEnv["generatedFileName"],
+            versionFor:"serviceRepo",
+            generatedFileName: "serviceRepo",
             generatorBasePath: __dirname,
             sample:{},
-            oldDir: generatorEnv["oldDir"]
+            oldDir: "/oldVersions"
         })
+        
     }
 
     async cacheAll(){
-        let executionFunction = ser_gen_logic[export_ENV]['cacheMethodName']
-        return cacheLogic[executionFunction]().then(async(products)=>{
-            this.generatorDataSample["version"] = await this.getVersion()
-            this.generatorDataSample["data"]    = [...products]
-            return {...this.generatorDataSample}
+        return getAllProductsForServiceRepo().then(async(products)=>{
+            this.sample.data    = [...products]
+            this.sample.version = await this.getVersion()
         })
     }
 
@@ -36,7 +34,7 @@ class serviceRepoGenerator extends generator{
         if(!(await this.checkGeneratorVersionWithCurrent()) || forceCreate){
             // read_MONGO -> archive -> generate
             this.archiveToOldVersions()
-            safe = await this.writeLatestGenerator.bind(this)()
+            safe = await this.writeLatestGenerator()
             responseObject.type = "Generated"
         }else{
             safe = true

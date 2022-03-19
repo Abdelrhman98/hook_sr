@@ -1,0 +1,263 @@
+var globelMaper = {}
+
+  
+ function  maper(object, acc={},str=""){
+    if(typeof object != 'object'){
+      globelMaper[str.substr(1)] = object 
+      acc[str.substr(1)] = object
+      return acc
+    }
+      Object.keys(object).forEach(ele=>{
+      maper(object[ele],acc,`${str}.${ele}`)
+    })
+	
+  }
+  
+  
+
+let x = {
+      "isNew": 0,
+      "_id": "61d4233ccba705d05dee5d76",
+      "ser_id": 82,
+      "provider_id": 6,
+      "ar_name": "فاليو",
+      "data_fields": {
+        "mobile": {
+          "ar_label": "رقم الموبايل",
+          "en_label": "bill ID",
+          "field_name": "mobile",
+          "max_len": "11",
+          "min_len": "11",
+          "visible": true,
+          "required": true,
+          "input_type": "N",
+          "confirmed": true
+        },
+        "bills_count": {
+          "ar_label": "عدد الأقساط",
+          "en_label": "bills count",
+          "field_name": "bills_count",
+          "input_type": "S"
+        },
+        "total_payable_amount": {
+          "ar_label": "القيمة الكلية",
+          "en_label": " Total Payable Amount",
+          "field_name": "total_payable_amount",
+          "input_type": "S"
+        }
+      },
+      "en_name": "Valu",
+      "amount": {
+        "ar_label": "القيمة",
+        "en_label": "amount",
+        "field_name": "amount",
+        "valueType": "range",
+        "range_min": 5,
+        "range_max": 10000,
+        "is_user_entered": true,
+        "calculate_fee": true,
+        "replace": [
+          "range_max",
+          "total_payable_amount"
+        ],
+        "credit": true
+      },
+      "service_charge": {
+        "ar_label": "تكلفة الخدمة",
+        "en_label": "service charge",
+        "field_name": "service_charge",
+        "slides": [
+          {
+            "scValueType": "F",
+            "fromValue": 1,
+            "toValue": 1000000000,
+            "scValue": 10
+          }
+        ]
+      },
+      "requests": [
+        {
+          "name": "valu_inq",
+          "order": 1,
+          "request_type": "I",
+          "inputs": [
+            "mobile"
+          ],
+          "outputs": [
+            "bills_count",
+            "total_payable_amount"
+          ]
+        },
+        {
+          "name": "valu_pay",
+          "order": 2,
+          "request_type": "P",
+          "inputs": [
+            "mobile",
+            "amount",
+            "service_charge"
+          ],
+          "outputs": []
+        }
+      ],
+      "main_biller": "معاملات مالية و بنوك",
+      "receipt": {
+        "template_id": 7,
+        "optional": false
+      },
+      "sector": "المدفوعات المالية",
+      "__v": 0,
+      "userIdentification": "mobile"
+    }
+,y=  {
+      "isNew": 10,
+      "ser_id": 83,
+      "provider_id": 7,
+      "ar_name": "فاليو",
+  		"test":"test",
+      "data_fields": {
+        "mobile": {
+          "ar_label": "رقم الموبايل",
+          "en_label": "bill ID",
+          "field_name": "mobile",
+          "min_len": "11",
+          "visible": true,
+          "required": true,
+          "input_type": "N",
+          "confirmed": true
+        },
+        "bills_count": {
+          "ar_label": "عدد الأقساط",
+          "en_label": "bills count",
+          "field_name": "bills_count",
+          "input_type": "P"
+        },
+        "total_payable_amount": {
+          "ar_label": "القيمة الكلية",
+          "en_label": " Total Payable Amount",
+          "field_name": "total_payable_amount",
+          "input_type": "S"
+        }
+      },
+      "en_name": "Valu",
+      "amount": {
+        "ar_label": "القيمة",
+        "en_label": "amount",
+        "field_name": "amount",
+        "valueType": "range",
+        "range_min": 5,
+        "range_max": 20,
+        "is_user_entered": true,
+        "calculate_fee": true,
+        "replace": [
+          "abdullah",
+          
+
+        ],
+        "credit": true
+      },
+      "service_charge": {
+        "ar_label": "تكلفة الخدمة",
+        "en_label": "service charge",
+        "field_name": "service_charge",
+        "slides": [
+          {
+            "scValueType": "F",
+            "fromValue": 1,
+            "toValue": 1000000000,
+            "scValue": 10
+          }
+        ]
+      },
+      "requests": [
+        {
+          "name": "valu_inq",
+          "order": 1,
+          "request_type": "I",
+          "inputs": [
+            "mobile"
+          ],
+          "outputs": [
+            "bills_count",
+            "total_payable_amount"
+          ]
+        },
+        {
+          "name": "valu_pay",
+          "order": 2,
+          "request_type": "P",
+          "inputs": [
+            "mobile",
+            "amount",
+            "service_charge"
+          ],
+          "outputs": []
+        }
+      ],
+      "main_biller": "معاملات مالية و بنوك",
+      "receipt": {
+        "template_id": 7,
+        "optional": false
+      },
+      "sector": "المدفوعات المالية",
+      "__v": 0,
+      "userIdentification": "mobile"
+    }
+maper(x)
+// globelMaper
+
+
+    
+  var baseObject =x,
+  diffObject = y,
+  tempMap = {},
+  baseMap = {},
+  diffMap = {},
+  addedKeys = [],
+  removefKeys = [],
+  changedValues = {},
+  resultMap = {};
+
+function mapify(object, objectName="default",str=""){
+      if(typeof object != 'object'){
+        let newKey = {}
+        newKey[objectName] = object
+          diffMap[str.substr(1)] = Object.assign(diffMap[str.substr(1)]||{},newKey) 
+          return 
+      }
+      Object.keys(object).forEach(ele=>{
+          mapify(object[ele],objectName,`${str}.${ele}`)
+      })
+  }
+
+function mapifyAll(){
+    mapify(baseObject, "base")
+    mapify(diffObject, "diff")
+}
+
+function calcDiff(){
+    Object.keys(diffMap).forEach(baseKey =>{
+      let keys = Object.keys(diffMap[baseKey])
+      	if(keys.length >= 2 &&diffMap[baseKey][keys[0]] != diffMap[baseKey][keys[1]])
+          	changedValues[baseKey] = { from : diffMap[baseKey]['base'] , to : diffMap[baseKey]['diff'] }  
+        if( keys.length == 1 && keys[0] == 'base'  ){
+            removefKeys.push(baseKey)
+        }if (keys.length ==1 && keys[0] == "diff"  ){
+            addedKeys.push(baseKey)
+        }
+      
+    })
+    return {"added":[...addedKeys], "removed":[...removefKeys], "changed":{...changedValues}}
+}
+
+mapifyAll()
+// diffMap
+calcDiff()
+
+
+
+// calcDiff()
+
+
+
+

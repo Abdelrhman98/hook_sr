@@ -46,9 +46,12 @@ async function getProductsByIdsWithSchema(ids=[], schema){
 
 
 function getAllProductsForServiceRepo(filter={}, scheme={}){
-    return serviceId.find({}).exec()
+    return serviceId.find().exec()
 }
 
+async function getServiceByFilter(filter={}, scheme={}){
+    return serviceId.find(filter).exec()
+}
 
 function addNewProductToServiceRepo( product ){
     const newProduct = serviceId(product)
@@ -68,6 +71,11 @@ async function updateProductById( productId, product ){
     return await serviceId.findOneAndUpdate({ser_id:productId},{$set:product}).exec()
 }
 
+async function cacheAllProd_uat(){
+    uatFilter= {ser_id:82}
+    return await getServiceByFilter(uatFilter)
+}
+
 module.exports = {
     test,
     getProductsWithIds,
@@ -76,5 +84,6 @@ module.exports = {
     addNewProductToServiceRepo,
     getServiceById,
     updateProductById,
-    getProductsByIdsWithSchema
+    getProductsByIdsWithSchema,
+    cacheAllProd_uat
 }

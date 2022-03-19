@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "ENV=local nodemon app.js",
-    "test": "jest"
+    "test-betaGen": "jest test/betaCalc/betaCalc.test.js"
   },
   "dependencies": {
     "@sequelize/core": "^7.0.0-alpha.10",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "axios": "^0.25.0",
+    "gulp": "^4.0.2",
     "jest": "^27.4.7"
   }
 }

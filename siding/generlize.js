@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost:27017/serviceRepo', {
         console.log('Error in DB connection: ' + err)
     }
 });
-const productModel = require('../DB/models/product.model')
+
 const newProducts = require('../DB/models/productBackup.model')
 let counter = 0
 let keyss = {}
